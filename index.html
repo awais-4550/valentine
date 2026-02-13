@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Valentine's Chronicle | Jane Austen Edition</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS with Custom Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        burgundy: '#800020',
+                        gold: '#D4AF37',
+                        sage: '#DAE6D7',
+                        blush: '#E6D7D7',
+                        primary: '#2C241B',
+                        secondary: '#5A4A3F',
+                    },
+                    fontFamily: {
+                        script: ['"Great Vibes"', 'cursive'],
+                        display: ['"Playfair Display"', 'serif'],
+                        body: ['"Cormorant Garamond"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Specific overrides for this page if needed */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: #FDFBF7;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading-screen">
+        <div class="text-center">
+            <h2 class="font-script text-burgundy text-4xl mb-4">Preparing the Ink...</h2>
+            <div class="divider-ornate">❦</div>
+        </div>
+    </div>
+
+    <!-- Floating Petals Container -->
+    <div id="petals-container" class="particle-container"></div>
+
+    <!-- Music Control -->
+    <div id="music-control" class="music-control" title="Play Enchanted">
+        <!-- SVG Icon will be injected by JS -->
+        <svg viewBox="0 0 24 24" fill="#800020">
+            <path d="M8 5v14l11-7z" />
+        </svg>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="paper-card fade-in">
+            <div id="main-content">
+                <!-- Javascript will inject content here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- App Logic -->
+    <script src="js/app.js?v=2"></script>
+</body>
+
+</html>

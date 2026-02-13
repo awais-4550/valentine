@@ -1,0 +1,291 @@
+/* Global Reset & Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-cream: #FDFBF7;
+    --color-blush: #E6D7D7;
+    --color-sage: #DAE6D7;
+    --color-gold: #D4AF37;
+    --color-burgundy: #800020;
+    --color-text-primary: #2C241B;
+    --color-text-secondary: #5A4A3F;
+    --font-script: 'Great Vibes', cursive;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Cormorant Garamond', serif;
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-deep: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+html {
+    background-color: var(--color-cream);
+}
+
+body {
+    background-color: transparent;
+    /* Allow html bg to show through */
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Background Image with Blur */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('../assets/images/austen_collage.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(6px);
+    /* Subtle blur */
+    opacity: 0.5;
+    /* Blend with the cream background behind it */
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    color: var(--color-burgundy);
+}
+
+.font-script {
+    font-family: var(--font-script);
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.text-gold {
+    color: var(--color-gold);
+}
+
+/* Key Layout Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Specific Aesthetic Components */
+
+/* The Letter/Papery Container */
+.paper-card {
+    background: #FFFAF0;
+    /* slightly darker cream */
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    /* faint gold border */
+    padding: 3rem;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.08),
+        inset 0 0 60px rgba(255, 250, 240, 0.5);
+    /* Inner glow */
+    position: relative;
+    border-radius: 4px;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+/* "Wax Seal" Button */
+.btn-austin {
+    background: var(--color-burgundy);
+    color: var(--color-cream);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 50% / 10%;
+    /* slight oval shape */
+    box-shadow:
+        0 4px 6px rgba(128, 0, 32, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.btn-austin::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: inherit;
+}
+
+.btn-austin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(128, 0, 32, 0.4);
+    background: #900024;
+}
+
+/* Vintage Decorative Dividers */
+.divider-ornate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    color: var(--color-gold);
+    font-size: 1.5rem;
+}
+
+.divider-ornate::before,
+.divider-ornate::after {
+    content: '';
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+    flex: 1;
+    margin: 0 1rem;
+    max-width: 150px;
+}
+
+/* Floating Elements (Petals/Sparkles) */
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Music Control */
+.music-control {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    background: rgba(255, 250, 240, 0.8);
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-gold);
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    background: var(--color-cream);
+    transform: scale(1.1);
+}
+
+.music-control svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-burgundy);
+}
+
+/* Cheeky Popup Styles */
+.cheeky-popup {
+    position: fixed;
+    background: #FFFAF0;
+    border: 1px solid #D4AF37;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--color-burgundy);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        3px 3px 0 rgba(212, 175, 55, 0.2);
+    z-index: 100;
+    pointer-events: none;
+    transform: rotate(-2deg);
+    max-width: 250px;
+    text-align: center;
+    animation: popup 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 2px;
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0) rotate(-10deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(-2deg);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .paper-card {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    /* Override utility styles if needed */
+}
